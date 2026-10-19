@@ -85,6 +85,8 @@
   var atual = [], idx = 0, focoAnterior = null;
 
   function mostrar() {
+    lb.classList.toggle("lb--doc", !!atual[idx].doc);
+    lb.scrollTop = 0;
     lbImg.src = atual[idx].src;
     lbImg.alt = atual[idx].nome;
     lbCap.textContent = atual[idx].nome + " · " + (idx + 1) + " de " + atual.length;
@@ -120,6 +122,34 @@
     var dx = e.changedTouches[0].clientX - x0;
     if (Math.abs(dx) > 50) passo(dx < 0 ? 1 : -1);
     x0 = null;
+  });
+
+  // ---------- Manual: abas PT/EN, ampliar, copiar link ----------
+  var paginas = [
+    { src: "manual/manual-pt.jpg", nome: "Manual do hóspede — Português", doc: true },
+    { src: "manual/manual-en.jpg", nome: "Guest guide — English", doc: true }
+  ];
+  var abas = [document.getElementById("tabPt"), document.getElementById("tabEn")];
+  var paineis = [document.getElementById("manualPt"), document.getElementById("manualEn")];
+  abas.forEach(function (aba, i) {
+    aba.addEventListener("click", function () {
+      abas.forEach(function (a, j) {
+        a.classList.toggle("is-active", i === j);
+        a.setAttribute("aria-selected", i === j ? "true" : "false");
+        paineis[j].hidden = i !== j;
+      });
+    });
+  });
+  paineis.forEach(function (p, i) {
+    p.addEventListener("click", function () { abrir(paginas, i); });
+  });
+
+  var copiar = document.getElementById("copiarLink");
+  copiar.addEventListener("click", function () {
+    var url = location.origin + location.pathname;
+    var ok = function () { copiar.textContent = "Link copiado ✓"; setTimeout(function () { copiar.textContent = "Copiar link"; }, 2200); };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, function () { prompt("Copie o link:", url); });
+    else prompt("Copie o link:", url);
   });
 
   // ---------- Menu lateral ----------

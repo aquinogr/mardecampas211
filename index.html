@@ -30,6 +30,7 @@
 
   <nav class="nav" id="nav">
     <a href="#inicio" class="nav-link"><span class="ico">🏠</span>Boas-vindas</a>
+    <a href="#manual" class="nav-link"><span class="ico">📄</span>Manual do hóspede</a>
     <a href="#destaques" class="nav-link"><span class="ico">✨</span>Destaques do flat</a>
     <a href="#flat" class="nav-link"><span class="ico">🛏️</span>O flat por dentro</a>
     <a href="#lazer" class="nav-link"><span class="ico">🏊</span>Área de lazer</a>
@@ -61,10 +62,49 @@
       <p class="hero-lead">Seu flat pertinho da Vila do Padre Arlindo. Aqui você encontra tudo o que precisa para aproveitar a estadia: como funciona o flat, a energia, as regras e o melhor de Tamandaré.</p>
       <div class="hero-actions">
         <a class="btn btn--primary" href="#energia">⚡ Chegou agora? Comece pela energia</a>
-        <a class="btn btn--ghost" href="#flat">Ver o flat</a>
+        <a class="btn btn--ghost" href="#manual">📄 Manual do hóspede</a>
       </div>
     </div>
     <a class="hero-scroll" href="#destaques" aria-label="Rolar para os destaques">↓</a>
+  </section>
+
+  <!-- ===== Manual do hóspede ===== -->
+  <!-- As imagens e o PDF saem de ../manual/gerar.py (versão do site, sem Wi-Fi/telefone/acesso). -->
+  <section id="manual" class="section section--sand" data-section>
+    <header class="section-head reveal">
+      <p class="eyebrow">Sejam bem-vindos · Welcome</p>
+      <h2>Manual do hóspede</h2>
+      <p class="section-lead">O mesmo manual que fica impresso no flat, em português e em inglês. Toque na página para ampliar.</p>
+    </header>
+
+    <div class="manual reveal">
+      <div class="manual-view">
+        <div class="tabs" role="tablist" aria-label="Idioma do manual">
+          <button type="button" class="chip is-active" role="tab" aria-selected="true" aria-controls="manualPt" id="tabPt">Português</button>
+          <button type="button" class="chip" role="tab" aria-selected="false" aria-controls="manualEn" id="tabEn">English</button>
+        </div>
+        <button type="button" class="manual-page" id="manualPt" role="tabpanel" aria-labelledby="tabPt" data-zoom="0">
+          <img src="manual/manual-pt.jpg" width="1654" height="2339" alt="Manual do hóspede em português: check-in e check-out, sistema de economia de energia, Wi-Fi, regras do condomínio, segurança e contatos de emergência." loading="lazy">
+        </button>
+        <button type="button" class="manual-page" id="manualEn" role="tabpanel" aria-labelledby="tabEn" data-zoom="1" hidden>
+          <img src="manual/manual-en.jpg" width="1654" height="2339" alt="Guest guide in English: check-in and check-out, energy-saving system, Wi-Fi, building rules, safety and emergency numbers." loading="lazy">
+        </button>
+      </div>
+
+      <aside class="manual-side">
+        <a class="btn btn--primary btn--block" href="manual/manual-mar-de-campas-211.pdf" download>⬇ Baixar o PDF</a>
+        <p class="manual-note">2 páginas · frente em português, verso em inglês.</p>
+
+        <div class="qr-card">
+          <img src="manual/qr-mar-de-campas-211.svg" width="160" height="160" alt="QR code que abre este guia no celular">
+          <div>
+            <strong>Abra no celular</strong>
+            <p>Aponte a câmera para o código: este guia abre direto no navegador.</p>
+            <button type="button" class="link-btn" id="copiarLink">Copiar link</button>
+          </div>
+        </div>
+      </aside>
+    </div>
   </section>
 
   <!-- ===== Destaques ===== -->

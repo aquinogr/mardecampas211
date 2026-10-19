@@ -83,6 +83,23 @@ main{margin-left:var(--sidebar)}
 .card h3{font-size:20px;margin-bottom:6px}
 .card p{margin:0;color:var(--muted);font-size:15px}
 
+/* ---------- Manual ---------- */
+.manual{display:grid;grid-template-columns:minmax(0,560px) minmax(240px,320px);gap:clamp(24px,4vw,48px);align-items:start}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.manual-page{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:10px;cursor:zoom-in;
+  box-shadow:0 24px 50px -24px rgba(10,69,82,.45),0 2px 6px rgba(10,69,82,.08);overflow:hidden;transition:transform .3s}
+.manual-page:hover{transform:translateY(-3px)}
+.manual-page img{width:100%;height:auto}
+.manual-page:focus-visible{outline:3px solid var(--sea);outline-offset:3px}
+.manual-side{position:sticky;top:24px;display:grid;gap:14px}
+.btn--block{justify-content:center;width:100%}
+.manual-note{margin:0;font-size:13.5px;color:var(--muted);text-align:center}
+.qr-card{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--sand-2);border-radius:var(--radius);padding:16px}
+.qr-card img{width:110px;height:110px;flex:none}
+.qr-card strong{font-family:var(--font-display);font-size:18px;display:block;margin-bottom:4px}
+.qr-card p{margin:0 0 6px;font-size:13.5px;color:var(--muted);line-height:1.45}
+.link-btn{border:0;background:none;padding:0;color:var(--ocean);font:600 13.5px var(--font-body);text-decoration:underline;cursor:pointer}
+
 /* ---------- Galeria ---------- */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .chip{border:1px solid var(--sand-2);background:var(--white);color:var(--ink);padding:9px 16px;border-radius:999px;font:500 14px var(--font-body);cursor:pointer;transition:all .2s}
@@ -147,6 +164,11 @@ main{margin-left:var(--sidebar)}
 .lightbox figure{margin:0;max-width:min(1100px,100%);text-align:center}
 .lightbox img{max-height:82vh;width:auto;margin:0 auto;border-radius:10px}
 .lightbox figcaption{color:rgba(255,255,255,.8);font-size:14px;margin-top:12px}
+/* Manual ampliado: página na largura toda, rolagem vertical para ler */
+.lightbox.lb--doc{overflow-y:auto;align-items:flex-start;padding:64px 12px 24px}
+.lightbox.lb--doc figure{width:min(900px,100%)}
+.lightbox.lb--doc img{max-height:none;width:100%;border-radius:6px}
+.lightbox.lb--doc .lb-close{position:fixed}
 .lb-close,.lb-nav{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:50%;cursor:pointer;width:48px;height:48px;font-size:28px;line-height:1;display:grid;place-items:center}
 .lb-close{top:16px;right:16px}
 .lb-prev{left:16px;top:50%;transform:translateY(-50%)}
@@ -175,11 +197,17 @@ main{margin-left:var(--sidebar)}
   .hero-media::after{background:linear-gradient(180deg,rgba(10,69,82,0) 60%,var(--ocean-deep) 100%)}
   .hero-content{grid-column:1;grid-row:2;align-self:start;padding:6px 22px 76px}
   .hero-scroll{bottom:20px}
-  .split,.energy{grid-template-columns:1fr}
+  .split,.energy,.manual{grid-template-columns:1fr}
+  .manual-side{position:static}
+  .qr-card img{width:96px;height:96px}
   .energy-photo{max-width:320px}
   .gallery{columns:2 140px;column-gap:10px}
   .shot{margin-bottom:10px}
   .lb-nav{display:none}
+  /* No celular a página do manual na largura da tela fica ilegível: abre
+     com ~820px e o hóspede arrasta para os lados para ler. */
+  .lightbox.lb--doc{overflow:auto;justify-content:flex-start}
+  .lightbox.lb--doc figure{width:820px;max-width:none;flex:none}
 }
 
 @media (prefers-reduced-motion: reduce){
