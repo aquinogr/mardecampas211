@@ -73,10 +73,29 @@
   var lazer = dados.lazer.map(function (f) {
     return { src: "fotos/area-comum/" + f[0], w: f[1], h: f[2], nome: "Área de lazer" };
   });
-  if (lazer.length) {
-    renderGaleria(document.getElementById("galleryLazer"), lazer);
-    document.getElementById("lazerPending").hidden = true;
-  }
+  if (lazer.length) renderGaleria(document.getElementById("galleryLazer"), lazer);
+
+  // ---------- Vídeos do YouTube: miniatura primeiro, player só no clique ----------
+  document.querySelectorAll(".yt").forEach(function (box) {
+    var id = box.dataset.id, titulo = box.dataset.title || "Vídeo";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "yt-btn";
+    b.setAttribute("aria-label", "Assistir: " + titulo);
+    b.style.backgroundImage = "url('" + (box.dataset.poster || "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg") + "')";
+    b.innerHTML = '<span class="yt-play" aria-hidden="true"></span>' +
+      (box.dataset.label ? '<span class="yt-label"></span>' : "");
+    if (box.dataset.label) b.querySelector(".yt-label").textContent = box.dataset.label;
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+      f.title = titulo;
+      f.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      box.replaceChildren(f);
+    });
+    box.appendChild(b);
+  });
 
   // ---------- Lightbox ----------
   var lb = document.getElementById("lightbox");
