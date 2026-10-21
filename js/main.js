@@ -6,7 +6,7 @@
   var todas = [];
   dados.ambientes.forEach(function (a) {
     a.fotos.forEach(function (f) {
-      todas.push({ src: "fotos/" + a.id + "/" + f[0], w: f[1], h: f[2], ambiente: a.id, nome: a.nome });
+      todas.push({ src: "fotos/" + a.id + "/" + f[0], w: f[1], h: f[2], ambiente: a.id, nome: f[3] || a.nome });
     });
   });
 
@@ -71,7 +71,7 @@
 
   // Área de lazer
   var lazer = dados.lazer.map(function (f) {
-    return { src: "fotos/area-comum/" + f[0], w: f[1], h: f[2], nome: "Área de lazer" };
+    return { src: "fotos/area-comum/" + f[0], w: f[1], h: f[2], nome: f[3] || "Área de lazer" };
   });
   if (lazer.length) renderGaleria(document.getElementById("galleryLazer"), lazer);
 

@@ -1,11 +1,16 @@
 // Galeria. Para acrescentar uma foto: salve em fotos/<ambiente>/ e inclua
-// [arquivo, largura, altura] na lista. Largura e altura reservam o espaco da
+// [arquivo, largura, altura, legenda opcional] na lista. Largura e altura reservam o espaco da
 // foto antes de ela carregar -- sem isso o menu lateral salta para o lugar
 // errado enquanto as imagens de cima ainda estao chegando.
 window.FOTOS = {
   ambientes: [
     { id: "predio", nome: "Prédio", fotos: [
       ["fachada.jpg", 1018, 1280]
+    ]},
+    { id: "praia", nome: "Praia de Campas", fotos: [
+      ["campas-02.jpg", 960, 1280, "Praia de Campas, em frente ao prédio"],
+      ["campas-01.jpg", 960, 1280, "Praia de Campas, Tamandaré"],
+      ["campas-igreja-sao-pedro.jpg", 960, 1280, "Igreja de São Pedro, a 150 m do prédio"]
     ]},
     { id: "quarto", nome: "Quarto", fotos: [
       ["foto-15.jpg", 720, 1280],
@@ -18,6 +23,7 @@ window.FOTOS = {
       ["foto-22.jpg", 720, 1280]
     ]},
     { id: "sala", nome: "Sala e varanda", fotos: [
+      ["foto-42.jpg", 1034, 1280, "Bancada para mais comodidade nas refeições"],
       ["foto-24.jpg", 899, 1599],
       ["foto-25.jpg", 899, 1599],
       ["foto-23.jpg", 899, 1599],
@@ -57,5 +63,8 @@ window.FOTOS = {
       ["foto-41.jpg", 899, 1599]
     ]}
   ],
-  lazer: []  // mesmo formato, arquivos em fotos/area-comum/
+  lazer: [  // mesmo formato, arquivos em fotos/area-comum/
+    ["rooftop-01.jpg", 591, 1062, "Vista do rooftop da Praia de Campas, Tamandaré"],
+    ["rooftop-02.jpg", 591, 1062, "Piscina do rooftop"]
+  ]
 };
